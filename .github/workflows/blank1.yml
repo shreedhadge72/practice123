@@ -1,0 +1,43 @@
+# This workflow performs basic GitHub Actions tasks
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: ["feature"]
+  pull_request:
+    branches: ["feature"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Display current directory
+      - name: Display current directory
+        run: pwd
+
+      # List files and folders
+      - name: List files
+        run: ls -la
+
+      # Show current date
+      - name: Show date
+        run: date
+
+      # Create a text file
+      - name: Create text file
+        run: |
+          echo "Hello from GitHub Actions!" > output.txt
+          cat output.txt
+
+      # Run Python program
+      - name: Run Python program
+        run: |
+          python3 -c "print('Hello, World!')"
+          python3 -c "print('GitHub Actions is working successfully!')"
